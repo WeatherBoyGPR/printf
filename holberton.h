@@ -8,7 +8,7 @@
 typedef struct printf_
 {
         char *sym;
-        int (*print)(va_list arg, int w, int p, int c);
+        int (*print)(va_list arg, int wid, int pri, int len, unsigned int con);
 } printf_t;
 
 #endif
