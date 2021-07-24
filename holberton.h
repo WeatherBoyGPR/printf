@@ -11,4 +11,11 @@ typedef struct printf_
         int (*print)(va_list arg, int wid, int pri, int len, unsigned int con);
 } printf_t;
 
+typedef struct talley
+{
+	int wid;
+	int pri;
+	int len;
+} talley_t;
+
 #endif
