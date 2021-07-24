@@ -16,6 +16,7 @@ typedef struct talley
 	int wid;
 	int pri;
 	int len;
+	int idx;
 } talley_t;
 
 #endif
