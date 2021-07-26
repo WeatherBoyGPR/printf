@@ -35,7 +35,7 @@ int main()
 int _printf(const char *format)
 {
 	/*va_list box;*/
-	talley_t *tal;
+	talley_t **tal;
 
 	/*struct array printf*/
 	printf_t specs[] = {
@@ -44,12 +44,13 @@ int _printf(const char *format)
 		{"a", NULL},
 	};
 
+	tal = malloc(sizeof(talley_t *));
 
-	tal = malloc(sizeof(talley_t));
+	tal[0] = malloc(sizeof(talley_t));
 	if (tal == NULL)
 		return (1);
 
-	tal->wid = 3;
+	tal[0]->wid = 3;
 	/*input val*/
 	tal = formatval(format, specs, tal);
 	/*va_start(box, format);*/
@@ -63,11 +64,55 @@ int _printf(const char *format)
 	return (0);
 }
 
-talley_t *talal(talley_t *tal, const char *w, const char *p, int ls, int i, int l, int s)
+talley_t *formatval(const char *format, printf_t *ref, talley_t *tal)
+{
+        int i = 0, f = 0, lbuf = -1, specbuf = 0, x, y;
+        char *symlen = "hlL";
+        const char *wbuf, *pbuf;
+
+        while (*(format + i) != '\0')
+        {
+                x = 1, f = 0;
+                if (*(format + i) == '%')
+                {
+                printf("START\n");
+                        wbuf = NULL, pbuf = NULL, lbuf = -1, specbuf = 0;
+                        /*Checks for length modifier*/
+                        for (y = 0; symlen[y] != '\0' && *(format + i + x) != symlen[y]; y++)
+                                continue;
+                        if (symlen[y] != '\0')
+                                lbuf = y, x++;
+                        for (y = 0; format[i + x + y] <= '9' && format[i + x + y] >= '0'; y++)
+                                if (!y)
+                                        wbuf = (format + i + x + y);
+                        x += y;
+                        if (*(format + i + x) == '.')
+                                for (y = 1; (format[i + x + y] <= '9' && format[i + x + y] >= '0'); y++)
+                                        if (y == 1)
+                                                pbuf = (format + i + x + 1), f++;
+                        if (f)
+                                x += y, f = 0;
+                        for (y = 0; y < tal->wid && *(format + i + x) != *(ref[y].sym); y++)
+                                continue;
+                        if (y < tal->wid)
+                                specbuf = y, f++;
+                        if (f)
+                                tal = talal(tal, wbuf, pbuf, lbuf, i, (x + 1), specbuf), i++;
+                        printf("END\n\n");/**/
+                }
+                if (!f)
+                        i++;
+        }
+        return (tal);
+}
+
+
+talley_t *talal(talley_t *tal[], const char *w, const char *p, int ls, int i, int l, int s)
 {
 	printf("_width = %s_\n_precision = %s_\n_length sym = %d_\n_index = %d_\n_speclength = %d_\n_spec num = %d_\n", w, p, ls, i, l, s);
-	tal = _realloc(tal, (sizeof(talley_t *) * (1 + (tal[0].pri))), );
-	printf("");
+	tal = _realloc(tal, (sizeof(talley_t *) * (1 + (tal[0].pri))), (sizeof(talley_t *) * (2 + tal[0].pri)));
+	printf("TESTAAA\n");
+	tal[tal[0].pri] = malloc(sizeof(talley_t));
 	tal[i].lensym = ls;
 	tal[i].idx = i;
 	tal[i].len = l;
