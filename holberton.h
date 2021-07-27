@@ -5,12 +5,26 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+/**
+ * struct printf_ - Ties together specification chars and function pointers
+ * @sym: string beginning with specification char
+ * @print: function pointer to appropriate function
+ */
 typedef struct printf_
 {
 	char *sym;
 	int (*print)(va_list arg, int wid, int pri, int len, unsigned int con);
 } printf_t;
 
+/**
+ * struct talley - is meant to hold information regarding each found specifier
+ * @wid: width specifier. -1 if not found
+ * @pri: precision specifier, -1 if not found
+ * @lensym: index of length specifier in length string, -1 if not found
+ * @idx: index of specifier in format string
+ * @len: length of specifier in format string
+ * @spec: index of specifier character in printf_ structure array
+ */
 typedef struct talley
 {
 	int wid;

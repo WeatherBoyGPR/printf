@@ -1,11 +1,16 @@
 #include "holberton.h"
 
-int main(void)
-{
-	_printf("__ %L1231.21312s_");
-
-	return (0);
-}
+/*
+ * TESTMAIN
+ *int main(int argc, char **argv)
+ * {
+ *
+ *	if (argc == 2)
+ *		_printf(argv[1]);
+ *
+ *	return (0);
+ * }
+*/
 
 /*
  *  TESTS FOR INPUT VALIDATION
@@ -37,6 +42,12 @@ int main(void)
  *  S|S|O|O|O|X
  */
 
+/**
+ * _printf - Will perform formatted printing with any number of arguments
+ * @format: format string to use for printing
+ *
+ * Return: always 0
+ */
 int _printf(const char *format)
 {
 	/*va_list box;*/
@@ -47,6 +58,7 @@ int _printf(const char *format)
 		{"d", NULL},
 		{"s", NULL},
 		{"a", NULL},
+		{"%", NULL},
 	};
 
 	tal = malloc(sizeof(talley_t *));
@@ -55,7 +67,7 @@ int _printf(const char *format)
 	if (tal == NULL)
 		return (1);
 
-	tal[0]->wid = 3;
+	tal[0]->wid = 4;
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
@@ -68,6 +80,16 @@ int _printf(const char *format)
 	return (0);
 }
 
+/*FIX I INCREMENT IN FORMATVAL*/
+
+/**
+ * formatval - will validate a format string and fill a structure array
+ * @format: format string to validate
+ * @ref: structure which contains specifiers and function their pointers
+ * @tal: talley_t structure array information is to be stored in
+ *
+ * Return: a pointer to the completed array
+ */
 talley_t **formatval(const char *format, printf_t *ref, talley_t **tal)
 {
 	int i = 0, f = 0, lbuf = -1, specbuf = 0, x, y;
@@ -108,7 +130,19 @@ talley_t **formatval(const char *format, printf_t *ref, talley_t **tal)
 	return (tal);
 }
 
-
+/**
+ * talal - will allocate a new element in a talley_t structure array,
+ * fills element with information about valid specifier
+ * @tal: talley_t structure array to add to
+ * @w: pointer to where the width begins in the format string
+ * @p: pointer to where the precision begins in the format string
+ * @ls: index of length specifier
+ * @i: index of conversion specifier in format string
+ * @l: length of conversion specifier in format string
+ * @s: index of specifier character in printf_t structure array
+ *
+ * Return: pointer to talley_t structure array
+ */
 talley_t **talal(talley_t **tal, cch *w, cch *p, int ls, int i, int l, int s)
 {
 	int idx, sot;
@@ -134,6 +168,12 @@ talley_t **talal(talley_t **tal, cch *w, cch *p, int ls, int i, int l, int s)
 	return (tal);
 }
 
+/**
+ * natoi - will atoi all beginning numerical characters in a string
+ * @num: string to process
+ *
+ * Return: resulting number
+ */
 int natoi(cch *num)
 {
 	int i = 0;

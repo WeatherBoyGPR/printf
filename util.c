@@ -45,6 +45,12 @@ int _strlen(char *s)
 	return (i);
 }
 
+/**
+ * printtally - will print all elements in an structure array of talley_t
+ * @tal: structure array to print
+ *
+ * Return: nothing
+ */
 void printtally(talley_t **tal)
 {
 	int idx = 0, j  = tal[0]->pri;
@@ -73,6 +79,12 @@ void printtally(talley_t **tal)
 	}
 }
 
+/**
+ * freetally - will free an array of structure talley_t
+ * @tal: array to free
+ *
+ * Return: nothing
+ */
 void freetally(talley_t **tal)
 {
 	int i = 0, j  = tal[0]->pri;
