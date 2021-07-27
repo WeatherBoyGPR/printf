@@ -79,8 +79,6 @@ int _printf(const char *format)
 	return (0);
 }
 
-/*FIX I INCREMENT IN FORMATVAL*/
-
 /**
  * formatval - will validate a format string and fill a structure array
  * @format: format string to validate
