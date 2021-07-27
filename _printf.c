@@ -1,16 +1,15 @@
 #include "holberton.h"
-
 /*
- * TESTMAIN
+ *TESTMAIN
  *int main(int argc, char **argv)
- * {
+ *{
  *
  *	if (argc == 2)
  *		_printf(argv[1]);
  *
  *	return (0);
- * }
-*/
+ *}
+ */
 
 /*
  *  TESTS FOR INPUT VALIDATION
@@ -122,7 +121,7 @@ talley_t **formatval(const char *format, printf_t *ref, talley_t **tal)
 			if (y < tal[0]->wid)
 				specbuf = y, f++;
 			if (f)
-				tal = talal(tal, wbuf, pbuf, lbuf, i, (x + 1), specbuf), i++;
+				tal = talal(tal, wbuf, pbuf, lbuf, i, (x + 1), specbuf), i += (x + 1);
 		}
 		if (!f)
 			i++;
