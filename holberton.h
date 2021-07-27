@@ -21,13 +21,17 @@ typedef struct talley
 	int spec;
 } talley_t;
 
+typedef const char cch;
+
 /*store total number of functions in talley[0].wid*/
 /*store total number of found specifiers in talley[0].pri*/
 
 int _printf(const char *format);
-talley_t *formatval(const char *format, printf_t *ref, talley_t *tal);
-talley_t *talal(talley_t *tal, const char *w, const char *p, int ls, int i, int l, int s);
+talley_t **formatval(const char *format, printf_t *ref, talley_t **tal);
+talley_t **talal(talley_t **tal, cch *w, cch *p, int ls, int i, int l, int s);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-int natoi(const char *num);
+void freetally(talley_t **tal);
+int natoi(cch *num);
+void printtally(talley_t **tal);
 
 #endif
