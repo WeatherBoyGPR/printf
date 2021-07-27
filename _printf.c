@@ -2,30 +2,39 @@
 
 int main(void)
 {
-	_printf("apple%1231.123s_%L123.41apples%s, %23s");
+	_printf("__ %L1231.21312s_");
 
 	return (0);
 }
 
 /*
  *  TESTS FOR INPUT VALIDATION
- *  +|L|W|P|S
- *  S|O|O|O|O
- *  S|X|O|O|O
- *  S|X|X|O|O
- *  S|X|X|X|O
- *  S|X|X|X|X
- *  S|X|X|O|X
- *  S|X|O|X|O
- *  S|X|O|X|X
- *  S|X|O|O|X
- *  S|O|X|O|O
- *  S|O|X|X|O
- *  S|O|X|X|X
- *  S|O|X|O|X
- *  S|O|O|X|O
- *  S|O|O|X|X
- *  S|O|O|O|X
+ *
+ * V - tested with valgrind
+ * C - tested without valgrind
+ * L - tested with length modifier
+ * W - tested with width modifier
+ * P - tested with precision modifier
+ * S - tested with specifier
+ *
+ *  V|C|L|W|P|S
+ *  ===========
+ *  S|S|O|O|O|O
+ *  S|S|X|O|O|O
+ *  S|S|X|X|O|O
+ *  S|S|X|X|X|O
+ *  S|S|X|X|X|X
+ *  S|S|X|X|O|X
+ *  S|S|X|O|X|O
+ *  S|S|X|O|X|X
+ *  S|S|X|O|O|X
+ *  S|S|O|X|O|O
+ *  S|S|O|X|X|O
+ *  S|S|O|X|X|X
+ *  S|S|O|X|O|X
+ *  S|S|O|O|X|O
+ *  S|S|O|O|X|X
+ *  S|S|O|O|O|X
  */
 
 int _printf(const char *format)
@@ -70,7 +79,6 @@ talley_t **formatval(const char *format, printf_t *ref, talley_t **tal)
 		x = 1, f = 0;
 		if (*(format + i) == '%')
 		{
-			printf("START\n");
 			wbuf = NULL, pbuf = NULL, lbuf = -1, specbuf = 0, x = 1, f = 0;
 			/*Checks for length modifier*/
 			for (y = 0; symlen[y] != '\0' && *(format + i + x) != symlen[y]; y++)
@@ -89,13 +97,10 @@ talley_t **formatval(const char *format, printf_t *ref, talley_t **tal)
 				x += y, f = 0;
 			for (y = 0; y < tal[0]->wid && *(format + i + x) != *(ref[y].sym); y++)
 				continue;
-			printf("y = %d\ncomp = %d\n", y, tal[0]->wid);
 			if (y < tal[0]->wid)
 				specbuf = y, f++;
-			printf("f = %d\n", f);
 			if (f)
 				tal = talal(tal, wbuf, pbuf, lbuf, i, (x + 1), specbuf), i++;
-			printf("END\n\n");
 		}
 		if (!f)
 			i++;
@@ -112,14 +117,11 @@ talley_t **talal(talley_t **tal, cch *w, cch *p, int ls, int i, int l, int s)
 
 	idx = (tal[0]->pri + 1);
 	tal = _realloc(tal, (sot) * (1 + (tal[0]->pri)), (sot) * (2 + tal[0]->pri));
-	printf("TESTAAA\n");
 	tal[tal[0]->pri + 1] = malloc(sizeof(talley_t));
-	printf("TESTBBB\n");
 	tal[idx]->lensym = ls;
 	tal[idx]->idx = i;
 	tal[idx]->len = l;
 	tal[idx]->spec = s;
-	printf("TESTCCC\n");
 	if (w != NULL)
 		tal[idx]->wid = natoi(w);
 	else
@@ -129,7 +131,6 @@ talley_t **talal(talley_t **tal, cch *w, cch *p, int ls, int i, int l, int s)
 	else
 		tal[idx]->pri = -1;
 	tal[0]->pri += 1;
-	printf("TESTZZZ\n");
 	return (tal);
 }
 

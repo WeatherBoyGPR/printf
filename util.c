@@ -68,8 +68,6 @@ void printtally(talley_t **tal)
 		else
 		{
 			printf("total elements = %d\n", tal[0]->pri);
-			printf("spec for last element = %d\n", (tal[(tal[0]->pri)])->spec);
-
 		}
 		idx++;
 	}
