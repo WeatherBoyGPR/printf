@@ -1,17 +1,22 @@
 #include "holberton.h"
-/*
- *TESTMAIN
- *int main(int argc, char **argv)
- *{
- *
- *	if (argc == 2)
- *		_printf(argv[1]);
- *
- *	return (0);
- *}
- */
 
-/*
+/* TESTMAIN*/
+ int main(int argc, char **argv)
+ {
+	 int variable1;
+	(void) argc;
+	(void) **argv;
+
+	variable1 = _printf("test 1");
+	printf("%i", variable1);
+ /*	if (argc == 2)
+ 		_printf(argv[1]);*/
+
+ 	return (0);
+ }
+
+
+/**
  *  TESTS FOR INPUT VALIDATION
  *
  * V - tested with valgrind
@@ -39,7 +44,7 @@
  *  S|S|O|O|X|O
  *  S|S|O|O|X|X
  *  S|S|O|O|O|X
- */
+*/
 
 /**
  * _printf - Will perform formatted printing with any number of arguments
@@ -54,10 +59,10 @@ int _printf(const char *format)
 
 	/*struct array printf*/
 	printf_t specs[] = {
-		{"d", NULL},
-		{"s", NULL},
-		{"a", NULL},
+		{"c", printf_t.cha},
+		{"s", printf_t.spec},
 		{"%", NULL},
+		{NULL, NULL},
 	};
 
 	tal = malloc(sizeof(talley_t *));
@@ -78,6 +83,8 @@ int _printf(const char *format)
 	freetally(tal);
 	return (0);
 }
+
+
 
 /**
  * formatval - will validate a format string and fill a structure array
