@@ -54,13 +54,13 @@
  */
 int _printf(const char *format)
 {
-	/*va_list box;*/
+	va_list box;
 	talley_t **tal;
 
 	/*struct array printf*/
 	printf_t specs[] = {
-		{"c", printf_t.cha},
-		{"s", printf_t.spec},
+		{"c", print_char},
+		{"s", NULL},
 		{"%", NULL},
 		{NULL, NULL},
 	};
@@ -75,12 +75,14 @@ int _printf(const char *format)
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
-	/*va_start(box, format);*/
-	/* */
-	/*va_end(box);*/
+	va_start(box, format);
+
+	core_logic(format, specs, tal, box);
 
 	printtally(tal);
 	freetally(tal);
+
+	va_end(box);
 	return (0);
 }
 
