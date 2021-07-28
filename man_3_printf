@@ -1,0 +1,60 @@
+.TH _PRINTF 1 "July 2020" "Holberton School"
+
+.SH NAME
+_printf \- prints a formatted string built from variables
+
+.SH SYNOPSIS
+.B _printf (const char *
+\fIFORMAT\fR , \fIARGUMENT\fR...)
+.br
+.B -printf ('%[\fIOPERATOR\fR]\');
+.TP
+NOTE: single quotes are for the purposes of demonstration, are replaced with double quotes when running function
+
+.SH DESCRIPTION
+Print ARGUMENTS(s) to standard output as per the OPTION given inside the FORMAT string
+.TP
+%%: prints a mod (%) character to standard output
+.TP
+%s: string pointed to in ARGUMENT is printed to standard output in place of the OPTION
+.TP
+%c: singular char found in ARGUMENT is printed to standard output in place of the OPTION
+.TP
+%d: decimal number found in ARGUMENT is printed to standard output in place of the OPTION
+.TP
+%b: unsigned decimal number found in ARGUMENT is printed to standard output in base 2 in place of the OPTION
+.TP
+%u: unsigned decimal number found in ARGUMENT is printed to standard output in base 10 in place of the OPTION
+.TP
+%o: decimal number found in ARGUMENT is printed to standard output in base 8 in place of the OPTION
+.TP
+%x: decimal number found in ARGUMENT is printed to standard output in base 16 in place of the OPTION
+.TP
+%X: decimal number found in ARGUMENT is printed to standard output in uppercase base 16 in place of the OPTION
+.TP
+%S: string pointed to by wcahr_t pointer found in ARGUMENT is printed to standard output in place of the OPTION
+.TP
+%p: pointer address found in ARGUMENT is printed to standard output in uppercase base 16 in place of the OPTION
+.TP
+%r: string pointed to in ARGUMENT is printed to standard output in reverse in place of the OPTION
+.TP
+%R: string pointed to in ARGUMENT is printed to standard output in ROT13 in place of the OPTION
+
+.SH AUTHOR
+Written by Johanne Lopez and Gino Rossi Jr
+
+.SH FILES
+_printf.c
+util.c
+holberton.h
+README.md
+man_3_printf
+
+.SH NOTES
+
+.TP
+The function printtalley in util.c serves the sole purpose of debugging, and shouldn't be called in normal use
+
+.SH "SEE ALSO"
+man printf
+.PP
