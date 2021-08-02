@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  * struct printf_ - Ties together specification chars and function pointers
@@ -47,5 +48,17 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void freetally(talley_t **tal);
 int natoi(cch *num);
 void printtally(talley_t **tal);
+int core_logic(const char *format, printf_t *ref, talley_t **tal, va_list box);
+
+int _putchar(char c);
+char *rot13(char *str);
+void rev_string(char *s);
+int _strlen(char *s);
+
+int mod_specprint(va_list args, int wid, int pri, int len, unsigned int con);
+int s_specprint(va_list args, int wid, int pri, int len, unsigned int con);
+int c_specprint(va_list args, int wid, int pri, int len, unsigned int con);
+int r_specprint(va_list args, int wid, int pri, int len, unsigned int con);
+int R_specprint(va_list args, int wid, int pri, int len, unsigned int con);
 
 #endif
