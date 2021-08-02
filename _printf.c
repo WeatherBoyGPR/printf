@@ -1,19 +1,17 @@
 #include "holberton.h"
 
 /* TESTMAIN*/
- int main(int argc, char **argv)
- {
-	 int variable1;
-	(void) argc;
-	(void) **argv;
+int main(void)
+{
+	/*printf("STARTMAIN");
+	printf("Character:[%c]\n", 'G');
+	printf("START_PRINT");*/
+	_printf("Character:[%s]\n", "APPLESAPPLESAPPLES\n");
 
-	variable1 = _printf("test 1");
-	printf("%i", variable1);
- /*	if (argc == 2)
- 		_printf(argv[1]);*/
-
- 	return (0);
- }
+	/*printf("END_PRINT");
+	printf("ENDMAIN");*/
+	return (0);
+}
 
 
 /**
@@ -44,7 +42,7 @@
  *  S|S|O|O|X|O
  *  S|S|O|O|X|X
  *  S|S|O|O|O|X
-*/
+ */
 
 /**
  * _printf - Will perform formatted printing with any number of arguments
@@ -52,18 +50,21 @@
  *
  * Return: always 0
  */
-int _printf(const char *format)
+int _printf(const char *format, ...)
 {
 	va_list box;
 	talley_t **tal;
 
 	/*struct array printf*/
 	printf_t specs[] = {
-		{"c", print_char},
-		{"s", NULL},
-		{"%", NULL},
-		{NULL, NULL},
+		{"c", c_specprint},
+		{"s", s_specprint},
+		{"%", mod_specprint},
+		{"r", r_specprint},
+		{"R", R_specprint},
 	};
+
+	printf("PRINTF START -- \n");
 
 	tal = malloc(sizeof(talley_t *));
 
@@ -75,14 +76,22 @@ int _printf(const char *format)
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
+	printf("AAATESTAAA");
 	va_start(box, format);
-
-	core_logic(format, specs, tal, box);
-
+/**/ printf("TESTWWW");
 	printtally(tal);
+	putchar('\n');
+/*	printf("FORMAT STRING BELOW");
+	printf("%s", format);*/
+/*----*/
+	core_logic(format, specs, tal, box);
+	/*PRINTTALLY IS FOR DEBUGGING ONLY*/
+	/*printtally(tal);*/
 	freetally(tal);
 
 	va_end(box);
+
+	printf("PRINTF_END -- \n");
 	return (0);
 }
 
