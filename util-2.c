@@ -13,53 +13,28 @@ int _putchar(char c)
 }
 
 /**
- * main - Prints the minimum number of coins to
- *        make change for an amount of money.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * rot13 - will convert a string with rot13
+ * @str: string to be processed
  *
- * Return: If the number of arguments is not exactly one - 1.
- *         Otherwise - 0.
+ * Return: pointer to the processed string
  */
-int main(int argc, char *argv[])
+char *rot13(char *str)
 {
-	int cnt1, cnt2 = 0;
+	int x, y;
+	char *com[2] = {"aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ",
+		"nNoOpPqQrRsStTuUvVwWxXyYzZaAbBcCdDeEfFgGhHiIjJkKlLmM"};
 
-	if (argc != 2)
+	for (x = 0; *(str + x) != '\0'; x++)
 	{
-		printf("Error\n");
-		return (1);
+		for (y = 0; com[0][y]; y++)
+		{
+			if (*(com[0] + y) == *(str + x))
+			{
+				*(str + x) = *(com[1] + y);
+				break;
+			}
+		}
 	}
 
-	cnt1 = atoi(argv[1]);
-
-	while (cnt1 > 0)
-	{
-		cnt1++;
-		if ((cnt1 - 25) >= 0)
-		{
-			cnt1 -= 25;
-			continue;
-		}
-		if ((cn1 - 10) >= 0)
-		{
-			cn1 -= 10;
-			continue;
-		}
-		if ((cnt1 - 5) >= 0)
-		{
-			cnt1 -= 5;
-			continue;
-		}
-		if ((cnt1 - 2) >= 0)
-		{
-			cnt1 -= 2;
-			continue;
-		}
-		cnt1--;
-	}
-
-	printf("%d\n", cnt2);
-
-	return (0);
+	return (str);
 }
