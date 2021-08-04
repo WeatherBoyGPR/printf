@@ -64,7 +64,7 @@ int _printf(const char *format, ...)
 		{"R", R_specprint},
 	};
 
-	printf("PRINTF START -- \n");
+	/*printf("PRINTF START -- \n");*/
 
 	tal = malloc(sizeof(talley_t *));
 
@@ -76,23 +76,21 @@ int _printf(const char *format, ...)
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
-	printf("AAATESTAAA");
 	va_start(box, format);
-/**/ printf("TESTWWW");
-	printtally(tal);
-	putchar('\n');
+	/*printtally(tal);*/
+	_putchar('\n');
 /*	printf("FORMAT STRING BELOW");
 	printf("%s", format);*/
 /*----*/
 	core_logic(format, specs, tal, box);
 	/*PRINTTALLY IS FOR DEBUGGING ONLY*/
-	/*printtally(tal);*/
-	freetally(tal);
+	/*printtally(tal);
+	freetally(tal);*/
 
 	va_end(box);
 
-	printf("PRINTF_END -- \n");
-	return (0);
+	/*printf("PRINTF_END -- \n");
+	*/return (0);
 }
 
 

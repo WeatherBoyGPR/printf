@@ -9,7 +9,6 @@ int core_logic(const char *format, printf_t *ref, talley_t **tal, va_list box)
 	int buf_w = 0, buf_l = 0, buf_pri = 0;
 	int cnt = 0;
 
-	printf("CORELOGIC_START\n");
 	while (format[index]!= '\0')
 	{
 		/*printf("TEST1");*/
@@ -34,6 +33,5 @@ int core_logic(const char *format, printf_t *ref, talley_t **tal, va_list box)
 		/*printf(" - INDEX = %d", tem);*/
 	}
 
-	printf("CORELOGIC_END\n");
 	return (cnt);
 }
