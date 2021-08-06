@@ -51,7 +51,7 @@ int _strlen(char *s)
  *
  * Return: nothing
  */
-/*void printtally(talley_t **tal)
+void printtally(talley_t **tal)
 {
 	int idx = 0, j  = tal[0]->pri;
 	int w = 0, p = 0, ls = 0, i = 0, l = 0, s = 0;
@@ -66,18 +66,18 @@ int _strlen(char *s)
 			i = tal[idx]->idx;
 			l = tal[idx]->len;
 			s = tal[idx]->spec;
-		*	printf("\nSTARTPRINT - %d\n", idx);
+			printf("\nSTARTPRINT - %d\n", idx);
 			printf("_width = %d_\n_precision = %d_\n_length sym = %d_\n", w, p, ls);
 			printf("_index = %d_\n_speclength = %d_\n_spec num = %d_\n", i, l, s);
 			printf("ENDPRINT - %d\n", idx);
-		/}
+		}
 		else
 		{
-		*	printf("total elements = %d\n", tal[0]->pri);/
+			printf("total elements = %d\n", tal[0]->pri);
 		}
 		idx++;
 	}
-}*/
+}
 
 /**
  * freetally - will free an array of structure talley_t
