@@ -1,19 +1,5 @@
 #include "holberton.h"
 
-/* TESTMAIN*/
-int main(void)
-{
-	/*printf("STARTMAIN");
-	printf("Character:[%c]\n", 'G');
-	printf("START_PRINT");*/
-	_printf("Character:[%s]\n", "APPLESAPPLESAPPLES\n");
-
-	/*printf("END_PRINT");
-	printf("ENDMAIN");*/
-	return (0);
-}
-
-
 /**
  *  TESTS FOR INPUT VALIDATION
  *
@@ -72,20 +58,16 @@ int _printf(const char *format, ...)
 	if (tal == NULL)
 		return (1);
 
-	tal[0]->wid = 4;
+	tal[0]->wid = 5;
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
 	va_start(box, format);
-	/*printtally(tal);*/
-	_putchar('\n');
-/*	printf("FORMAT STRING BELOW");
-	printf("%s", format);*/
 /*----*/
 	core_logic(format, specs, tal, box);
 	/*PRINTTALLY IS FOR DEBUGGING ONLY*/
-	/*printtally(tal);
-	freetally(tal);*/
+	/*printtally(tal);*/
+	freetally(tal);
 
 	va_end(box);
 
