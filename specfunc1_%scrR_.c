@@ -81,7 +81,7 @@ int s_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 		return (con);
 	}
 
-	/*write(1, s, _strlen(s));*/
+	write(1, s, _strlen(s));
 
 	return (con + 1);
 }

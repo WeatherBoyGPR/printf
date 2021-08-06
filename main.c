@@ -1,12 +1,7 @@
+#include "holberton.h"
 
 int main(void)
 {
-	/*printf("STARTMAIN");
-	printf("Character:[%c]\n", 'G');
-	printf("START_PRINT");*/
-	_printf("Character:[%s]\n", "APPLESAPPLESAPPLES\n");
-
-	/*printf("END_PRINT");
-	printf("ENDMAIN");*/
+	_printf("Percent:[%%]\nString:[%s]\nCharacter:[%c]\n", "APPLESAPPLESAPPLES", 'K');
 	return (0);
 }
