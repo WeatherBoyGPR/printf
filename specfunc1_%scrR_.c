@@ -83,7 +83,7 @@ int s_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 
 	write(1, s, _strlen(s));
 
-	return (con + 1);
+	return (con + _strlen(s));
 }
 
 /**
@@ -133,7 +133,7 @@ int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	write(1, c, _strlen(c));
 
 	free(c);
-	return (con + 1);
+	return (con + _strlen(c));
 }
 
 /**
@@ -160,5 +160,5 @@ int R_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	write(1, c, _strlen(c));
 
 	free(c);
-	return (con + 1);
+	return (con + _strlen(c));
 }

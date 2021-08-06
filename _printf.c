@@ -38,6 +38,7 @@
  */
 int _printf(const char *format, ...)
 {
+	int num;
 	va_list box;
 	talley_t **tal;
 
@@ -64,7 +65,7 @@ int _printf(const char *format, ...)
 	tal = formatval(format, specs, tal);
 	va_start(box, format);
 /*----*/
-	core_logic(format, specs, tal, box);
+	num = core_logic(format, specs, tal, box);
 	/*PRINTTALLY IS FOR DEBUGGING ONLY*/
 	/*printtally(tal);*/
 	freetally(tal);
@@ -72,7 +73,7 @@ int _printf(const char *format, ...)
 	va_end(box);
 
 	/*printf("PRINTF_END -- \n");
-	*/return (0);
+	*/return (num);
 }
 
 

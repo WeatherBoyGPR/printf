@@ -29,7 +29,7 @@ int core_logic(const char *format, printf_t *ref, talley_t **tal, va_list box)
 			/*printf("TEST3");*/
 			/*tem = index;*/
 			_putchar(format[index]);
-			index++;
+			index++, cnt++;
 		}
 		/*printf(" - INDEX = %d", tem);*/
 	}
