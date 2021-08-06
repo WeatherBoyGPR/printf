@@ -54,6 +54,7 @@ int _putchar(char c);
 char *rot13(char *str);
 void rev_string(char *s);
 int _strlen(char *s);
+char *_strdup(char *str);
 
 int mod_specprint(va_list args, int wid, int pri, int len, unsigned int con);
 int s_specprint(va_list args, int wid, int pri, int len, unsigned int con);
