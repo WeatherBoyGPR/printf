@@ -120,6 +120,7 @@ int c_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
 	char *s, *c;
+	int l;
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
 		return(con);
@@ -128,12 +129,13 @@ int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	if (s == NULL)
 		return (con);
 	c = _strdup(s);
+	l = _strlen(c);
 
 	rev_string(c);
-	write(1, c, _strlen(c));
+	write(1, c, l);
 
 	free(c);
-	return (con + _strlen(c));
+	return (con + l);
 }
 
 /**
@@ -147,6 +149,7 @@ int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 int R_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
 	char *s, *c;
+	int l;
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
 		return (con);
@@ -155,10 +158,11 @@ int R_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	if (s == NULL)
 		return (con);
 	c = _strdup(s);
+	l = _strlen(c);
 
 	c = rot13(c);
-	write(1, c, _strlen(c));
+	write(1, c, l);
 
 	free(c);
-	return (con + _strlen(c));
+	return (con + l);
 }
