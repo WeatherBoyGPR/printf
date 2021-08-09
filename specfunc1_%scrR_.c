@@ -78,7 +78,7 @@ int s_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	if (s == NULL)
 	{
 		write(1, err, _strlen(err));
-		return (con);
+		return (con + _strlen(err));
 	}
 
 	write(1, s, _strlen(s));
