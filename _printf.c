@@ -51,13 +51,15 @@ int _printf(const char *format, ...)
 		{"R", R_specprint},
 	};
 
+	if (format == NULL)
+		return (0);
 	/*printf("PRINTF START -- \n");*/
 
 	tal = malloc(sizeof(talley_t *));
 
 	tal[0] = malloc(sizeof(talley_t));
 	if (tal == NULL)
-		return (1);
+		return (0);
 
 	tal[0]->wid = 5;
 	tal[0]->pri = 0;
