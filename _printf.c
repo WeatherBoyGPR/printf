@@ -41,6 +41,7 @@ int _printf(const char *format, ...)
 	int num;
 	va_list box;
 	talley_t **tal;
+	char *err = "Error : NO FORMAT STRING\n";
 
 	/*struct array printf*/
 	printf_t specs[] = {
@@ -53,7 +54,10 @@ int _printf(const char *format, ...)
 	};
 
 	if (format == NULL)
+	{
+		write(2, err, _strlen(err));
 		return (0);
+	}
 	/*printf("PRINTF START -- \n");*/
 
 	tal = malloc(sizeof(talley_t *));
