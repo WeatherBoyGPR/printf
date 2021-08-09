@@ -44,6 +44,7 @@ int _printf(const char *format, ...)
 
 	/*struct array printf*/
 	printf_t specs[] = {
+		{"", nul_specprint},
 		{"c", c_specprint},
 		{"s", s_specprint},
 		{"%", mod_specprint},
@@ -61,7 +62,7 @@ int _printf(const char *format, ...)
 	if (tal == NULL)
 		return (0);
 
-	tal[0]->wid = 5;
+	tal[0]->wid = 6;
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
