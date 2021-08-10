@@ -60,9 +60,11 @@ int _printf(const char *format, ...)
 	/*printf("PRINTF START -- \n");*/
 
 	tal = malloc(sizeof(talley_t *));
+	if (tal == NULL)
+		return (0);
 
 	tal[0] = malloc(sizeof(talley_t));
-	if (tal == NULL)
+	if (tal[0] == NULL)
 		return (0);
 
 	tal[0]->wid = 5;
@@ -70,7 +72,7 @@ int _printf(const char *format, ...)
 	/*input val*/
 	tal = formatval(format, specs, tal);
 	va_start(box, format);
-/*----*/
+	/*----*/
 	num = core_logic(format, specs, tal, box);
 	/*PRINTTALLY IS FOR DEBUGGING ONLY*/
 	/*printtally(tal);*/
@@ -79,7 +81,7 @@ int _printf(const char *format, ...)
 	va_end(box);
 
 	/*printf("PRINTF_END -- \n");
-	*/return (num);
+	 */return (num);
 }
 
 
