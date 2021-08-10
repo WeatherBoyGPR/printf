@@ -14,7 +14,7 @@ int core_logic(const char *format, printf_t *ref, talley_t **tal, va_list box)
 	while (format[index]!= '\0')
 	{
 		/*printf("TEST1");*/
-		if (tot != 0 && tal[y]->idx == index && ref != NULL && box != NULL)
+		if (tot && tal[y]->idx == index && ref != NULL && box != NULL && format[index + 1] != '\0')
 		{
 			buf_w = tal[y]->wid;
 			buf_l = tal[y]->lensym;

@@ -89,21 +89,4 @@ int i_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 		return (count);
 	}
 	return (con + 1);
-}
-*/
-/**
- * nul_specprint - will handle a null byte specifier
- * @args: va_list to obtain variable from
- * @wid: width modifier to print variable with, -1 if unused
- * @pri: precision modifier to print variable with, -1 if unused
- * @len: length modifier to print variable with, -1 if unused
- * @con: variable to keep track of number of printed characters
- */
-int nul_specprint(va_list args, int wid, int pri, int len, unsigned int con)
-{
-
-	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
-
-	return (con);
-}
+}*/
