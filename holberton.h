@@ -62,5 +62,4 @@ int c_specprint(va_list args, int wid, int pri, int len, unsigned int con);
 int r_specprint(va_list args, int wid, int pri, int len, unsigned int con);
 int R_specprint(va_list args, int wid, int pri, int len, unsigned int con);
 
-int nul_specprint(va_list args, int wid, int pri, int len, unsigned int con);
 #endif
