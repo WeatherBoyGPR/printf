@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 	{
 		write(2, err, _strlen(err));
-		return (0);
+		return (_strlen(err));
 	}
 	/*printf("PRINTF START -- \n");*/
 
