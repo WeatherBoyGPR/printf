@@ -50,6 +50,8 @@ int _printf(const char *format, ...)
 		{"%", mod_specprint},
 		{"r", r_specprint},
 		{"R", R_specprint},
+		{"i", di_specprint},
+		{"d", di_specprint},
 	};
 
 	if (format == NULL)
@@ -67,7 +69,7 @@ int _printf(const char *format, ...)
 	if (tal[0] == NULL)
 		return (0);
 
-	tal[0]->wid = 5;
+	tal[0]->wid = 7;
 	tal[0]->pri = 0;
 	/*input val*/
 	tal = formatval(format, specs, tal);
