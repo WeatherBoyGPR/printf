@@ -1,5 +1,15 @@
 #include "holberton.h"
 
+/**
+ * di_specprint - will print an integer
+ * @args: va_list to obtain variable from
+ * @wid: width modifier to print variable with, -1 if unused
+ * @pri: precision modifier to print variable with, -1 if unused
+ * @len: length modifier to print variable with, -1 if unused
+ * @con: variable to keep track of number of printed characters
+ *
+ * Return: total printed characters
+ */
 int di_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
 	long int num = 0, new = 0, n = 32;
@@ -7,7 +17,7 @@ int di_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	char *arr;
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
+		return (con);
 	num = va_arg(args, int);
 	arr = malloc(sizeof(char) * n);
 	if (arr == NULL)
@@ -16,7 +26,7 @@ int di_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	{
 		_putchar('-');
 		count++;
-		new = num *(-1);
+		new = num * (-1);
 	}
 	else
 		new = num;
@@ -44,6 +54,7 @@ int di_specprint(va_list args, int wid, int pri, int len, unsigned int con)
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of printed characters
+ * Return: total printed characters
  */
 int b_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
@@ -51,10 +62,10 @@ int b_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	char *str;
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
+		return (con);
 	str = malloc(sizeof(char) * (1 + (sizeof(unsigned int) * 8)));
 	if (str == NULL)
-		return(con);
+		return (con);
 	b = va_arg(args, unsigned int);
 	do {
 		str[idx] = ((b & 1) + '0');
@@ -80,6 +91,8 @@ int b_specprint(va_list args, int wid, int pri, int len, unsigned int con)
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of specifier functions
+ *
+ * Return: total printed characters
  */
 int p_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
@@ -87,11 +100,12 @@ int p_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	char *com[] = {":;<=>?", "abcdef"}, *str = NULL, *alt = NULL;
 	unsigned int idx = 0, count = 0, y = 0;
 	unsigned long int point;
+
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
+		return (con);
 	str = malloc(((sizeof(void *) * 8) + 1) * sizeof(char));
 	if (str == NULL)
-		return(con);
+		return (con);
 	alt = str;
 	add = va_arg(args, void *);
 	point = (unsigned long int)add;
@@ -99,8 +113,7 @@ int p_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	{
 		do {
 			str[idx] = ((point & 15) + '0');
-			point = point >> 4;
-			idx++;
+			point = point >> 4, idx++;
 		} while (point != 0);
 		str[idx] = '\0';
 		for (idx = 0; str[idx] != '\0'; idx++)
@@ -112,8 +125,7 @@ int p_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 				}
 		rev_string(str);
 		_putchar('0');
-		_putchar('x');
-		count += 2;
+		_putchar('x'), count += 2;
 	}
 	else
 		str = "(nil)";
