@@ -13,7 +13,7 @@ int mod_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
+		return (con);
 
 	_putchar('%');
 
@@ -62,7 +62,7 @@ int c_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	char c;
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
+		return (con);
 
 	c = va_arg(args, int);
 
@@ -88,7 +88,7 @@ int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	int l;
 
 	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-		return(con);
+		return (con);
 
 	s = va_arg(args, char *);
 	if (s == NULL)
