@@ -13,7 +13,6 @@ int _printf(const char *format, ...)
 	talley_t **tal;
 	char *err = "Error : NO FORMAT STRING\n";
 
-	/*struct array printf*/
 	printf_t specs[] = {
 		{"c", c_specprint},
 		{"s", s_specprint},
@@ -26,13 +25,11 @@ int _printf(const char *format, ...)
 		{"b", b_specprint},
 		{"p", p_specprint},
 	};
-
 	if (format == NULL)
 	{
 		write(2, err, _strlen(err));
 		return (_strlen(err));
 	}
-
 	tal = malloc(sizeof(talley_t *));
 	if (tal == NULL)
 		return (0);
@@ -40,7 +37,6 @@ int _printf(const char *format, ...)
 	tal[0] = malloc(sizeof(talley_t));
 	if (tal[0] == NULL)
 		return (0);
-
 	tal[0]->wid = 10;
 	tal[0]->pri = 0;
 	tal = formatval(format, specs, tal);
