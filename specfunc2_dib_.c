@@ -72,3 +72,56 @@ int b_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 	free(str);
 	return (con + count);
 }
+
+/**
+ * p_specprint - will print a pointer
+ * @args: va_list to obtain variable from
+ * @wid: width modifier to print variable with, -1 if unused
+ * @pri: precision modifier to print variable with, -1 if unused
+ * @len: length modifier to print variable with, -1 if unused
+ * @con: variable to keep track of number of specifier functions
+ */
+int p_specprint(va_list args, int wid, int pri, int len, unsigned int con)
+{
+	void *add;
+	char *com[] = {":;<=>?", "abcdef"}, *str = NULL, *alt = NULL;
+	unsigned int idx = 0, count = 0, y = 0;
+	unsigned long int point;
+	if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
+		return(con);
+	str = malloc(((sizeof(void *) * 8) + 1) * sizeof(char));
+	if (str == NULL)
+		return(con);
+	alt = str;
+	add = va_arg(args, void *);
+	point = (unsigned long int)add;
+	if (point)
+	{
+		do {
+			str[idx] = ((point & 15) + '0');
+			point = point >> 4;
+			idx++;
+		} while (point != 0);
+		str[idx] = '\0';
+		for (idx = 0; str[idx] != '\0'; idx++)
+			for (y = 0; *(com[0] + y) != '\0'; y++)
+				if (str[idx] == *(com[0] + y))
+				{
+					str[idx] = *(com[1] + y);
+					break;
+				}
+		rev_string(str);
+		_putchar('0');
+		_putchar('x');
+		count += 2;
+	}
+	else
+		str = "(nil)";
+	for (idx = 0; str[idx] != '\0'; idx++)
+	{
+		_putchar(str[idx]);
+		count++;
+	}
+	free(alt);
+	return (con + count);
+}
