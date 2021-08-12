@@ -1,36 +1,6 @@
 #include "holberton.h"
 
 /**
- *  TESTS FOR INPUT VALIDATION
- *
- * V - tested with valgrind
- * C - tested without valgrind
- * L - tested with length modifier
- * W - tested with width modifier
- * P - tested with precision modifier
- * S - tested with specifier
- *
- *  V|C|L|W|P|S
- *  ===========
- *  S|S|O|O|O|O
- *  S|S|X|O|O|O
- *  S|S|X|X|O|O
- *  S|S|X|X|X|O
- *  S|S|X|X|X|X
- *  S|S|X|X|O|X
- *  S|S|X|O|X|O
- *  S|S|X|O|X|X
- *  S|S|X|O|O|X
- *  S|S|O|X|O|O
- *  S|S|O|X|X|O
- *  S|S|O|X|X|X
- *  S|S|O|X|O|X
- *  S|S|O|O|X|O
- *  S|S|O|O|X|X
- *  S|S|O|O|O|X
- */
-
-/**
  * _printf - Will perform formatted printing with any number of arguments
  * @format: format string to use for printing
  *
@@ -60,7 +30,6 @@ int _printf(const char *format, ...)
 		write(2, err, _strlen(err));
 		return (_strlen(err));
 	}
-	/*printf("PRINTF START -- \n");*/
 
 	tal = malloc(sizeof(talley_t *));
 	if (tal == NULL)
@@ -72,19 +41,13 @@ int _printf(const char *format, ...)
 
 	tal[0]->wid = 8;
 	tal[0]->pri = 0;
-	/*input val*/
 	tal = formatval(format, specs, tal);
 	va_start(box, format);
-	/*----*/
 	num = core_logic(format, specs, tal, box);
-	/*PRINTTALLY IS FOR DEBUGGING ONLY*/
-	/*printtally(tal);*/
 	freetally(tal);
 
 	va_end(box);
-
-	/*printf("PRINTF_END -- \n");
-	 */return (num);
+	return (num);
 }
 
 

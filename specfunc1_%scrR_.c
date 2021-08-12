@@ -1,44 +1,4 @@
 #include "holberton.h"
-/*
-int functtest(int n, ...)
-{
-	va_list args;
-	va_start(args, n);
-
-	n = mod_specprint(args, -1, -1, -1, 0);
-	n = s_specprint(args, -1, -1, -1, n);
-	va_end(args);
-	return (n);
-}
-
-int main(void)
-{
-	functtest(1);
-	return (0);
-}
-*/
-
-/*DOCUMENTATION TEMPLATE, REPLACE # WITH SPEC CHARACTER*/
-/**
- * #_specprint - will print a
- * @args: va_list to obtain variable from
- * @wid: width modifier to print variable with, -1 if unused
- * @pri: precision modifier to print variable with, -1 if unused
- * @len: length modifier to print variable with, -1 if unused
- * @con: variable to keep track of number of specifier functions
- */
-/* FORMAT FOR SPECIFIER FUNCTION
-int #_specprint(va_list args, int wid, int pri, int len, unsigned int con);
-{
-
-        if (!(wid == -1 && pri == -1 && len == -1 && args != NULL))
-                return(con);
-
-	[code here]
-
-        return (con + 1);
-}
-*/
 
 /**
  * mod_specprint - will print a percentage sign
@@ -47,6 +7,7 @@ int #_specprint(va_list args, int wid, int pri, int len, unsigned int con);
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of specifier functions
+ * Return: The count of characters printed.
  */
 int mod_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
@@ -66,6 +27,7 @@ int mod_specprint(va_list args, int wid, int pri, int len, unsigned int con)
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of specifier functions
+ * Return: The count of carachters printed.
  */
 int s_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
@@ -93,6 +55,7 @@ int s_specprint(va_list args, int wid, int pri, int len, unsigned int con)
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of specifier functions
+ * Return: The count of carachters printed.
  */
 int c_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
@@ -116,7 +79,9 @@ int c_specprint(va_list args, int wid, int pri, int len, unsigned int con)
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of specifier functions
+ * Return: The count of carachters printed.
  */
+
 int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
 	char *s, *c;
@@ -139,12 +104,13 @@ int r_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 }
 
 /**
- * #_specprint - will print a
+ * R_specprint - will print a
  * @args: va_list to obtain variable from
  * @wid: width modifier to print variable with, -1 if unused
  * @pri: precision modifier to print variable with, -1 if unused
  * @len: length modifier to print variable with, -1 if unused
  * @con: variable to keep track of number of specifier functions
+  * Return: The count of carachters printed.
  */
 int R_specprint(va_list args, int wid, int pri, int len, unsigned int con)
 {
