@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 		{"i", di_specprint},
 		{"d", di_specprint},
 		{"b", b_specprint},
+		{"p", p_specprint},
 	};
 
 	if (format == NULL)
@@ -39,7 +40,7 @@ int _printf(const char *format, ...)
 	if (tal[0] == NULL)
 		return (0);
 
-	tal[0]->wid = 8;
+	tal[0]->wid = 9;
 	tal[0]->pri = 0;
 	tal = formatval(format, specs, tal);
 	va_start(box, format);
